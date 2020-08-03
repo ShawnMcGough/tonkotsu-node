@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: Create Build
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -23,8 +23,10 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Runs a single command using the runners shell
-    - name: Send greeting
-      run: echo "Hello ${{ github.event.inputs.name }}"
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:        
+        name: tonkotsu-$GITHUB_RUN_ID
+        path: .
+        if-no-files-found: warn
