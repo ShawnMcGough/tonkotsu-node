@@ -19,14 +19,16 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "greet"
-  greet:
+  publish-build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v2.3.1
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:        
-        name: tonkotsu-$GITHUB_RUN_ID
+        name: tonkotsu-${{GITHUB_RUN_ID}}
         path: .
         if-no-files-found: warn
