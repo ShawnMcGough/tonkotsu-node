@@ -29,6 +29,6 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:        
-        name: tonkotsu-${{GITHUB_RUN_ID}}
+        name: tonkotsu-${{github.run_id}}
         path: .
         if-no-files-found: warn
